@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statechart Diagram</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/3.5.5/joint.min.css" />
+    <style>
+        #paper {
+            width: 800px;
+            height: 600px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="paper"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/3.5.5/joint.min.js"></script>
+    <script>
+        const graph = new joint.dia.Graph();
+        const paper = new joint.dia.Paper({
+            el: document.getElementById('paper'),
+            model: graph,
+            width: 800,
+            height: 600,
+            gridSize: 10,
+            drawGrid: true
+        });
+
+        const rect = new joint.shapes.standard.Rectangle();
+        rect.position(100, 30);
+        rect.resize(100, 40);
+        rect.attr({
+            body: {
+                fill: 'blue'
+            },
+            label: {
+                text: 'Stage 1',
+                fill: 'white'
+            }
+        });
+        rect.addTo(graph);
+
+        const rect2 = new joint.shapes.standard.Rectangle();
+        rect2.position(300, 30);
+        rect2.resize(100, 40);
+        rect2.attr({
+            body: {
+                fill: 'green'
+            },
+            label: {
+                text: 'Stage 2',
+                fill: 'white'
+            }
+        });
+        rect2.addTo(graph);
+
+        const link = new joint.shapes.standard.Link();
+        link.source(rect);
+        link.target(rect2);
+        link.addTo(graph);
+    </script>
+</body>
+</html>

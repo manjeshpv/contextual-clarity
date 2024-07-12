@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Statechart Diagram</title>
+    <script src="https://unpkg.com/gojs"></script>
+    <style>
+        #myDiagramDiv {
+            width: 800px;
+            height: 600px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiagramDiv"></div>
+    <script>
+        const $ = go.GraphObject.make;
+
+        const myDiagram = $(go.Diagram, "myDiagramDiv", {
+            initialContentAlignment: go.Spot.Center,
+            "undoManager.isEnabled": true
+        });
+
+        myDiagram.nodeTemplate =
+            $(go.Node, "Auto",
+                $(go.Shape, "RoundedRectangle", { strokeWidth: 0, fill: "lightblue" }),
+                $(go.TextBlock, { margin: 8 }, new go.Binding("text", "key"))
+            );
+
+        myDiagram.linkTemplate =
+            $(go.Link, { routing: go.Link.AvoidsNodes, curve: go.Link.JumpOver },
+                $(go.Shape),
+                $(go.Shape, { toArrow: "Standard" })
+            );
+
+        myDiagram.model = new go.GraphLinksModel(
+            [
+                { key: "Stage 1" },
+                { key: "Stage 2" },
+                { key: "Stage 3" }
+            ],
+            [
+                { from: "Stage 1", to: "Stage 2" },
+                { from: "Stage 2", to: "Stage 3" }
+            ]
+        );
+    </script>
+</body>
+</html>
