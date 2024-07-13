@@ -1,7 +1,14 @@
 const database = require('./database'); // Assuming you have a database module
 
+
+// Booking 
 module.exports = {
 
+
+
+    addStageConfig() {
+
+    }
 
     async createScenario() {
         // Fetch rows from the database
@@ -15,7 +22,7 @@ module.exports = {
 
     async getStages() {
         // Fetch stages from the database
-        return await database.getStages();
+        return await hasura.query();
     },
 
     async getPipelines() {
@@ -78,6 +85,11 @@ module.exports = {
     },
 
     mapPostAction(callbacks) {
+        switch(stageID) {
+            case 1: {
+                sending stage 1 email - your kyc collection process started
+            }
+        }
         // Map post actions
         callbacks.forEach(callback => callback());
     },

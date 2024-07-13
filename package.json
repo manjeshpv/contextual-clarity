@@ -1,0 +1,23 @@
+{
+  "name": "zoho-creator-community",
+  "description": "Unofficial zoho creator npm package helps with blueprint in mysql, postgres or mongodb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --require @babel/register 'test/**/*.test.js'"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.8",
+    "@babel/preset-env": "^7.24.8",
+    "@babel/register": "^7.24.6",
+    "chai": "^5.1.1",
+    "mocha": "^10.6.0",
+    "sinon": "^18.0.0"
+  },
+  "author": "Manjesh V",
+  "license": "ISC"
+}
